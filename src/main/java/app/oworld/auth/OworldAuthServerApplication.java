@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class OworldAuthServerApplication {
 
+    public static void main(String[] args) {
+        SpringApplication.run(OworldAuthServerApplication.class, args);
+    }
+
     @GetMapping
     public String hello(){
         return "Hello There👋";
     }
-
-    public static void main(String[] args) {
-        SpringApplication.run(OworldAuthServerApplication.class, args);
-
-    }
-
 }

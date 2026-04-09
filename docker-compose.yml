@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: ow-auth-pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ow-auth-pg-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: ow-auth-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - ow-auth-redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+volumes:
+  ow-auth-pg-data:
+    name: ow-auth-pg-data
+  ow-auth-redis-data:
+    name: ow-auth-redis-data
