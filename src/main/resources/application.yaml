@@ -1,6 +1,13 @@
+
+
 spring:
   application:
     name: oworld-auth-server
+  security:
+    private-key: ${PRIVATE_KEY_PATH}
+    public-key: ${PUBLIC_KEY_PATH}
+    refresh-token-validity: ${REFRESH_TOKEN_VALIDITY}
+    access-token-validity: ${ACCESS_TOKEN_VALIDITY}
   config:
     import: "optional:file:.env[.properties]"
   datasource:
